@@ -8,6 +8,9 @@ These files are ready-to-use samples and can be used within your OXVM without mo
 * change the hostname
 * manage resources
 * select/unselect features
+
+## In order to use Composer
+* Switch php.composer.install to '1'
 * add your GitHub Auth Token (recommended, for Composer)
 
 ## Provided files
@@ -16,3 +19,4 @@ These files are ready-to-use samples and can be used within your OXVM without mo
 
 ## Hints
 In order to prevent OXVM from downloading and installing OXID eShop CE, simply provide existing shop files in the shop's home directory. In the example: `/var/www/htdocs/source`.
+Required database credentials can be found in the personal.yml file.

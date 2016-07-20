@@ -20,14 +20,15 @@ php:
   version: 5.5
   composer:
     install: '0'
-mailhog:
-  install: true
-  web_port: 8025
+    github_token: ~
 mysql:
   root_password: oxid
   database: oxid
   user: oxid
   password: oxid
+mailhog:
+  install: true
+  web_port: 8025
 eshop_path:
   root: "{{ eshop_target_path }}"
   source: "{{ eshop_target_path }}/source"
@@ -43,8 +44,8 @@ eshop:
     env: "SHOP_PATH=\"''\" SHOP_TESTS_PATH='../tests' PARTIAL_MODULE_PATHS='null'"
     root: "{{ eshop_path.source }}"
     cache_url: ~
-    json_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.2-ce/source/composer.json
-    lock_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.2-ce/source/composer.lock
+    json_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.3-ce/source/composer.json
+    lock_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.3-ce/source/composer.lock
     prefer: dist
   source:
     repo: https://github.com/OXID-eSales/oxideshop_ce.git

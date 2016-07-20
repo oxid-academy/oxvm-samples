@@ -16,10 +16,11 @@ vagrant_local:
     locale: de_DE.UTF-8
     apt_mirror: http://de.archive.ubuntu.com/ubuntu/
 php:
-#  packages: [php5-cli, php5-intl, php5-mcrypt, php5-mysql, php5-gd, php5-curl]
-#  version: 5.6
+  packages: [php5-cli, php5-intl, php5-mcrypt, php5-mysql, php5-gd, php5-curl]
+  version: 5.5
   composer:
-    github_token: <Provide your GitHub Auth Token here>
+    install: '0'
+    github_token: ~
 eshop_path:
   root: "{{ eshop_target_path }}"
   source: "{{ eshop_target_path }}/source"
@@ -27,7 +28,7 @@ eshop_path:
   modules: "{{ eshop_target_path }}/source/modules"
 eshop_target_path: "{{ vagrant_local.vm.app_shared_folder.target }}"
 eshop:
-#  install: true
+  install: false
   config:
     utf_mode: 1
   composer:
@@ -35,8 +36,8 @@ eshop:
     env: "SHOP_PATH=\"''\" SHOP_TESTS_PATH='../tests' PARTIAL_MODULE_PATHS='null'"
     root: "{{ eshop_path.source }}"
     cache_url: ~
-    json_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.2-ce/source/composer.json
-    lock_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.2-ce/source/composer.lock
+    json_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.3-ce/source/composer.json
+    lock_source_url: https://raw.githubusercontent.com/OXID-eSales/oxideshop_ce/b-5.3-ce/source/composer.lock
     prefer: dist
   source:
     repo: https://github.com/OXID-eSales/oxideshop_ce.git
@@ -50,11 +51,6 @@ eshop:
       repo: https://github.com/OXID-eSales/module_certification_tools.git
 selenium:
   install: false
-  package:
-    firefox:
-      deb_url: http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_31.0-0ubuntu1_amd64.deb
-    self:
-      jar_url: http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
 varnish:
   install: true
   repo:
