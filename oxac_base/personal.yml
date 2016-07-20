@@ -16,16 +16,18 @@ vagrant_local:
     locale: de_DE.UTF-8
     apt_mirror: http://de.archive.ubuntu.com/ubuntu/
 php:
-#  packages: [php5-cli, php5-intl, php5-mcrypt, php5-mysql, php5-gd, php5-curl]
-#  version: 5.5
-#  composer:
-#    github_token: example_secret_token
+  packages: [php5-cli, php5-intl, php5-mcrypt, php5-mysql, php5-gd, php5-curl]
+  version: 5.5
+  composer:
+    install: '0'
+mailhog:
+  install: true
+  web_port: 8025
 mysql:
   root_password: oxid
   database: oxid
   user: oxid
   password: oxid
-#  dump: 'sql/db.sql'
 eshop_path:
   root: "{{ eshop_target_path }}"
   source: "{{ eshop_target_path }}/source"
