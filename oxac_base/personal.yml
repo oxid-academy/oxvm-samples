@@ -21,6 +21,8 @@ php:
   composer:
     install: '0'
     github_token: ~
+  zendguard:
+    install: true
 mysql:
   root_password: oxid
   database: oxid

@@ -21,6 +21,8 @@ php:
   composer:
     install: '0'
     github_token: ~
+  zendguard:
+    install: true
 eshop_path:
   root: "{{ eshop_target_path }}"
   source: "{{ eshop_target_path }}/source"
