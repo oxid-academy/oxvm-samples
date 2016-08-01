@@ -1,0 +1,22 @@
+# OS
+.DS_Store/
+__MACOSX/
+thumbs.db
+desktop.ini
+
+# Vagrant
+.vagrant/
+
+# Ansible
+playbook.retry
+
+# Python
+*.py[cod]
+
+# IDEs
+.idea
+.phpstorm-oxid.meta.php
+nbproject/
+.buildpath
+.project
+.settings/
