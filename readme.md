@@ -1,22 +1,37 @@
-# OXID Academy: "personal.yml" templates for OXVM
+# OXID Academy: "personal.yml" templates for Vagrant-based training projects
 
 ## Purpose
-These files are provided as samples for usage with the [OXVM](https://github.com/OXID-eSales/oxvm_eshop). Please refer to the training preparation manual in order to learn how to use these files.
+These files can be copied on top of a freshly checked out project using OXID's Base VM.
 
-These files are ready-to-use samples and can be used within your OXVM without modification -- but we recommend to modify them, e.g.
-* change the name of the VM
-* change the hostname
-* manage resources
-* select/unselect features
+## Steps
 
-## In order to use Composer
-* Switch php.composer.install to '1'
-* add your GitHub Auth Token (recommended, for Composer)
+### Create a new project
 
-## Provided files
-* "Base", for a quick setup. Perfect for basic trainings like the developer certification.
-* "Performance Features", prepared to install the Varnish Reverse Proxy.
+Check out OXID's Base VM: (https://github.com/OXID-eSales/oxvm_base). The files should be located in the location where you plan to set up your project.
 
-## Hints
-In order to prevent OXVM from downloading and installing OXID eShop CE, simply provide existing shop files in the shop's home directory. In the example: `/var/www/htdocs/source`.
-Required database credentials can be found in the personal.yml file.
+### Apply this package
+
+Copy the files of this package into the root directory of your project. When asked whether to overwrite files, confirm.
+
+### Use a configuration
+
+This package comes with 3 prepared versions of the `personal.yml` file. Pick the one which suits you most (e.g. `personal.yml.community-edition` for the basic training)
+and rename it to `personal.yml`. Open it with a text editor and modify it as desired. Be sure to stick with the YAML syntax.
+
+### Copy the OXID eShop files
+
+Copy the OXID eShop files of the desired version to the `htdocs` directory. When using OXID eShop Professional Edition or Enterprise Edition, be sure to use the
+files for PHP 5.6.
+
+Find OXID eShop CE here: https://github.com/OXID-eSales/oxideshop_ce
+
+### Get Vagrant ready
+
+Complete your Vagrant setup, if not done yet:
+`vagrant plugin install vagrant-hostmanager vagrant-triggers vagrant-share vagrant-vbguest vagrant-triggers vagrant-bindfs`
+
+### Launch your project VM
+
+Once your local environment is ready, run
+`vagrant up`
+and be patient. After a while you can access the shop by calling http://oxacvm.local (or as configured) in your web browser.

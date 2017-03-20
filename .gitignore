@@ -3,12 +3,17 @@
 __MACOSX/
 thumbs.db
 desktop.ini
+.fseventsd
+.Spotlight-V100
+.Trashes
+._.Trashes
 
 # Vagrant
 .vagrant/
 
 # Ansible
 playbook.retry
+authorized_keys
 
 # Python
 *.py[cod]
@@ -20,3 +25,21 @@ nbproject/
 .buildpath
 .project
 .settings/
+
+# OXID
+/htdocs/log/*
+/htdocs/tmp/*
+/htdocs/export/*
+/htdocs/cache/*
+/htdocs/setup/
+#/htdocs/out/downloads/*
+#/htdocs/out/media/*
+/htdocs/out/pictures/generated/*
+#/htdocs/out/pictures/ddmedia/thumbs/*
+
+# Installed by Composer
+composer.lock
+/htdocs/modules/vendor/
+
+# Installed by NPM
+node_modules/
