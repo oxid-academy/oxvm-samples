@@ -2,19 +2,22 @@
 # Override any variable from 'ansible/vars/oxideshop.yml' and 'base_vm/ansible/vars/default.yml'
 vagrant_local:
   vm:
-    name: OXACVM 2017 (Performance)
-    hostname: oxacperformance.local
+    name: OXACVM 2017 (EE)
+    hostname: oxacvmee.local
     aliases:
-      - oxacperformance.local
-      - oxacperformance.dev
-      - www.oxacperformance.dev
-
+      - www.oxacvmee.local
+      - oxidee.local
+      - www.oxidee.local
+      - sub1.oxidee.local
+      - sub2.oxidee.local
+      - sub3.oxidee.local
+      - sub4.oxidee.local
     app_shared_folder:
       source: ./
       target: /var/vagrant
     memory: '2048'
     cpus: 2
-    ip: 192.168.56.123
+    ip: 192.168.56.119
 server:
   timezone: Europe/Berlin
   locale: de_DE.UTF-8
@@ -39,9 +42,6 @@ php:
     - php5.6-curl
     - php5.6-xml
     - php5.6-zip
-  composer:
-    install: '0'
-    github_token: ~
 mysql:
   root_password: root
   database: oxid
@@ -59,22 +59,3 @@ adminer_editor:
   install: true
   pkg_url: 'https://raw.githubusercontent.com/OXID-eSales/oxvm_assets/master/editor-4.2.5-mysql-en.php'
   web_alias: '/adminer_editor/'
-selenium:
-  install: false
-varnish:
-  install: true
-  repo:
-    source: 'deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.0'
-    key: 'https://repo.varnish-cache.org/GPG-key.txt'
-    https: '1'
-  default_config:
-    source: "{{ eshop_path.library }}/ReverseProxy/Varnish/default.vcl"
-    target: /etc/varnish/default.vcl
-  servers_config:
-    source: "{{ eshop_path.library }}/ReverseProxy/Varnish/servers_conf.vcl.varnish_4.dist"
-    target: /etc/varnish/servers_conf.vcl
-  daemon_path: /usr/sbin/varnishd
-  package_name: varnish
-  default_config:
-    source: ~
-    target: /etc/varnish/default.vcl
