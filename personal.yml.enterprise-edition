@@ -46,6 +46,8 @@ php:
   xdebug:
     install: '1'
     host: ~
+  zendguard:
+    install: true
 mysql:
   root_password: root
   database: oxid
