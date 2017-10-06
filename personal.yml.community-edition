@@ -23,7 +23,7 @@ server:
   unattended_upgrade: true
 apache:
   install: true
-  docroot: /vagrant/htdocs/
+  docroot: /vagrant/oxideshop/source/
 php:
   zendguard:
     install: true
