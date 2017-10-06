@@ -13,8 +13,8 @@ vagrant_local:
       - sub3.oxidee.local
       - sub4.oxidee.local
     app_shared_folder:
-      source: ./
-      target: /var/vagrant
+      source: oxideshop
+      target: /var/www/oxideshop
     memory: '2048'
     cpus: 2
     ip: 192.168.56.119
@@ -25,10 +25,9 @@ server:
   unattended_upgrade: true
 apache:
   install: true
-  docroot: /vagrant/htdocs/
+  docroot: /vagrant/oxideshop/source/
 php:
-  zendguard:
-    install: true
+  install: true
   packages:
     - php5.6-bcmath
     - php5.6-mbstring
@@ -42,6 +41,11 @@ php:
     - php5.6-curl
     - php5.6-xml
     - php5.6-zip
+  version: ~
+  display_errors: On
+  xdebug:
+    install: '1'
+    host: ~
 mysql:
   root_password: root
   database: oxid
@@ -59,3 +63,5 @@ adminer_editor:
   install: true
   pkg_url: 'https://raw.githubusercontent.com/OXID-eSales/oxvm_assets/master/editor-4.2.5-mysql-en.php'
   web_alias: '/adminer_editor/'
+varnish:
+  install: false

@@ -10,8 +10,8 @@ vagrant_local:
       - www.oxacperformance.dev
 
     app_shared_folder:
-      source: ./
-      target: /var/vagrant
+      source: oxideshop
+      target: /var/www/oxideshop
     memory: '2048'
     cpus: 2
     ip: 192.168.56.123
@@ -22,10 +22,9 @@ server:
   unattended_upgrade: true
 apache:
   install: true
-  docroot: /vagrant/htdocs/
+  docroot: /vagrant/oxideshop/source/
 php:
-  zendguard:
-    install: true
+  install: true
   packages:
     - php5.6-bcmath
     - php5.6-mbstring
@@ -39,9 +38,12 @@ php:
     - php5.6-curl
     - php5.6-xml
     - php5.6-zip
-  composer:
-    install: '0'
-    github_token: ~
+    - php5.6-memcached
+  version: ~
+  display_errors: On
+  xdebug:
+    install: '1'
+    host: ~
 mysql:
   root_password: root
   database: oxid
@@ -64,8 +66,8 @@ selenium:
 varnish:
   install: true
   repo:
-    source: 'deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.0'
-    key: 'https://repo.varnish-cache.org/GPG-key.txt'
+    source: 'deb https://packagecloud.io/varnishcache/varnish40/ubuntu/ trusty main'
+    key: 'https://packagecloud.io/varnishcache/varnish40/gpgkey'
     https: '1'
   default_config:
     source: "{{ eshop_path.library }}/ReverseProxy/Varnish/default.vcl"
