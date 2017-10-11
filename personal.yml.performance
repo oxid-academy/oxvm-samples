@@ -8,7 +8,6 @@ vagrant_local:
       - oxacperformance.local
       - oxacperformance.dev
       - www.oxacperformance.dev
-
     app_shared_folder:
       source: oxideshop
       target: /var/www/oxideshop
