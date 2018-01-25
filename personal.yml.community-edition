@@ -2,31 +2,20 @@
 # Override any variable from 'ansible/vars/oxideshop.yml' and 'base_vm/ansible/vars/default.yml'
 vagrant_local:
   vm:
-    name: OXACVM 2017 (CE)
-    hostname: oxacvm.local
+    name: OXID-Academy6
+    hostname: oxacvm6.local
     aliases:
+      - www.oxacvm6.local
+      - oxacvm.local
       - www.oxacvm.local
-      - oxacvm.dev
-      - www.oxacvm.dev
-      - academy2017ce.local
-      - www.academy2017ce.local
-    app_shared_folder:
-      source: ./
-      target: /var/vagrant
-    memory: '2048'
-    cpus: 2
     ip: 192.168.56.105
+    memory: '2048'
+    cpus: 4
 server:
   timezone: Europe/Berlin
   locale: de_DE.UTF-8
   apt_mirror: http://de.archive.ubuntu.com/ubuntu/
-  unattended_upgrade: true
-apache:
-  install: true
-  docroot: /vagrant/oxideshop/source/
 php:
-  zendguard:
-    install: true
   packages:
     - php5.6-bcmath
     - php5.6-mbstring
@@ -40,8 +29,10 @@ php:
     - php5.6-curl
     - php5.6-xml
     - php5.6-zip
+  composer:
+    github_token: '<Generate your personal token at: @link https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/ >'
 mysql:
-  root_password: root
+  root_password: oxid
   database: oxid
   user: oxid
   password: oxid
