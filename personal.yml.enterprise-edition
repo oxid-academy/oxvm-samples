@@ -2,10 +2,10 @@
 # Override any variable from 'ansible/vars/oxideshop.yml' and 'base_vm/ansible/vars/default.yml'
 vagrant_local:
   vm:
-    name: OXACVM 2017 (EE)
-    hostname: oxacvmee.local
+    name: OXID-Academy6 (EE)
+    hostname: oxacvm6ee.local
     aliases:
-      - www.oxacvmee.local
+      - www.oxacvm6ee.local
       - oxidee.local
       - www.oxidee.local
       - sub1.oxidee.local
@@ -16,18 +16,13 @@ vagrant_local:
       source: oxideshop
       target: /var/www/oxideshop
     memory: '2048'
-    cpus: 2
+    cpus: 4
     ip: 192.168.56.119
 server:
   timezone: Europe/Berlin
   locale: de_DE.UTF-8
   apt_mirror: http://de.archive.ubuntu.com/ubuntu/
-  unattended_upgrade: true
-apache:
-  install: true
-  docroot: /vagrant/oxideshop/source/
 php:
-  install: true
   packages:
     - php5.6-bcmath
     - php5.6-mbstring
@@ -41,13 +36,11 @@ php:
     - php5.6-curl
     - php5.6-xml
     - php5.6-zip
-  version: ~
-  display_errors: On
   xdebug:
     install: '1'
     host: ~
-  zendguard:
-    install: true
+  composer:
+    github_token: '<Generate your personal token at: @link https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/ >'
 mysql:
   root_password: root
   database: oxid
@@ -67,3 +60,12 @@ adminer_editor:
   web_alias: '/adminer_editor/'
 varnish:
   install: false
+  repo:
+    source: 'deb https://packagecloud.io/varnishcache/varnish40/ubuntu/ trusty main'
+    key: 'https://packagecloud.io/varnishcache/varnish40/gpgkey'
+    https: '1'
+  daemon_path: /usr/sbin/varnishd
+  package_name: varnish
+  default_config:
+    source: ~
+    target: /etc/varnish/default.vcl
